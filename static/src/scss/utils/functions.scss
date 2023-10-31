@@ -1,0 +1,39 @@
+@function rem($pixels, $context: $main-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return calc($pixels / $context) * 1rem;
+}
+
+@function em($pixels, $context: $main-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return calc($pixels / $context) * 1em;
+}
+
+@function vw($px-vw, $base-vw: 1440px) {
+	@return calc(calc($px-vw * 100vw) / $base-vw);
+}
+
+@function vh($height, $base-vh: 899px) {
+	@return calc(calc($height/$base-vh * 100vh) * 1);
+}
+
+@function vt($px-vw, $base-vw: 1024px) {
+	@return calc(calc($px-vw * 100vw) / $base-vw);
+}
+
+@function vm($px-vw, $base-vw: 375px) {
+	@return calc(calc($px-vw * 100vw) / $base-vw);
+}

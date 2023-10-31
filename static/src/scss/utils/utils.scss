@@ -1,0 +1,147 @@
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-nowrap {
+	white-space: nowrap;
+}
+
+.hidden{
+	display: none !important;
+}
+
+.is-mobile {
+	@include rmin($tablet) {
+		display: none;
+	}
+}
+
+.color-red {
+	color: $cr-red;
+}
+
+.color-green {
+	color: $cr-green;
+}
+
+.jc-center {
+	justify-content: center;
+}
+
+.jc-start {
+	justify-content: flex-start;
+}
+
+.jc-end {
+	justify-content: flex-end;
+}
+
+.image-shadow {
+	position: absolute;
+	z-index: -1;
+	aspect-ratio: 1/1;
+	height: auto;
+	background-size: cover;
+	background-position: center;
+	filter: blur(vw(70px));
+}
+
+.explore-link {
+	display: flex;
+	align-items: center;
+	column-gap: vw(16px);
+	max-width: fit-content;
+	color: #ACADB9;
+	line-height: 226%;
+	letter-spacing: -0.088px;
+	text-decoration: none;
+	transition: color .3s ease-in;
+
+	.svg-icon_arrow-right {
+		width: vw(14px);
+		height: vw(14px);
+		stroke: currentColor;
+		transition: transform .3s ease-in-out;
+	}
+
+	&:hover {
+		color: $cr-dark;
+
+		.svg-icon_arrow-right {
+			transform: translateX(35%);
+		}
+	}
+}
+
+%antialias {
+	font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+%reset-btn {
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	background: none;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+%underlineDecor {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		bottom: -2px;
+		left: 0;
+		background-color: currentColor;
+		opacity: 0;
+		transform-origin: 50% 100%;
+	}
+}
+
+@keyframes underline-decor {
+	0% {
+		opacity: 1;
+		transform: scaleX(.6) scaleY(.2);
+	}
+
+	50% {
+		opacity: 1;
+		transform: scaleX(.6) scaleY(2);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scaleX(1) scaleY(1);
+	}
+}
+
+@keyframes rotate-center {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

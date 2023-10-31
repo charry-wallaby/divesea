@@ -1,0 +1,129 @@
+.btn{
+	@extend %reset-btn;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: vw(9px);
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	max-width: fit-content;
+	font-size: vw(16px);
+	font-weight: 500;
+	line-height: 150%;
+	text-transform: uppercase;
+	white-space: nowrap;
+	border: 1.5px solid $cr-black;
+	border-radius: vw(12px);
+	padding: vw(16px) vw(24px);
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0%;
+		height: 100%;
+		content: "";
+		z-index: 1;
+		transition: width .3s linear;
+	}
+
+	&__text {
+		position: relative;
+		z-index: 2;
+		transition: color .3s ease-in-out;
+	}
+
+	&__icon {
+		position: relative;
+		width: vw(22px);
+		height: vw(22px);
+		z-index: 2;
+		transition: fill .6s ease-in,
+			stroke .6s ease-in,
+			transform .3s ease-in-out;
+	}
+
+	&__primary {
+		color: $cr-white;
+		background-color: $cr-dark;
+
+		&::before {
+			background-color: $cr-white;
+		}
+
+		&.is-active,
+		&:hover {
+			color: $cr-dark;
+		}
+
+	}
+
+	&__secondary {
+		color: $cr-dark;
+
+		&::before {
+			background-color: $cr-dark;
+		}
+
+		&.is-active,
+		&:hover {
+			color: $cr-white;
+		}
+	}
+
+	&__white {
+		color: $cr-dark;
+		background-color: $cr-white;
+		border-color: $cr-white;
+
+		&::before {
+			background-color: $cr-dark;
+		}
+
+		&.is-active,
+		&:hover {
+			color: $cr-white;
+		}
+	}
+
+	&__filter {
+		border-radius: vw(13.3px);
+		border-width: 2.2px;
+		color: #1A202C;
+		font-family: $manrope-font;
+		font-size: vw(15.5px);
+		font-weight: 600;
+		line-height: 150%;
+		letter-spacing: 0.221px;
+
+		.btn__icon {
+			width: vw(25px);
+			height: vw(25px);
+		}
+	}
+
+	&.bc-white {
+		border-color: $cr-white;
+	}
+
+	&.is-active {
+		pointer-events: none;
+
+		&::before {
+			width: 100%;
+		}
+	}
+
+	&:hover {
+		&::before {
+			width: 100%;
+		}
+
+		&:not(.btn__filter) {
+			.btn__icon {
+				transform: translateX(20%);
+			}
+		}
+	}
+}

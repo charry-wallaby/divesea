@@ -1,0 +1,50 @@
+include ../utils/mixins
+include ../utils/includes
+
+- var headerVisible = true;
+- var footerVisible = true;
+- var pageClass = '';
+- var pageId = '';
+
+- var title = 'DiveSea';
+
+//- metablocks
+- var metaDescription = '';
+//- - var metaOgImage = 'img/socials/og-image.jpg'; //fb
+//- - var metaTwImage = 'img/socials/og-image.jpg'; //tw
+
+block variables
+
+doctype html
+html(lang=LANG)
+	head
+		meta(charset='utf-8')
+		meta(http-equiv="x-ua-compatible" content="ie=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+		meta(content="telephone=no" name="format-detection")
+		meta(name="HandheldFriendly" content="true")
+		+meta()
+		+favicon()
+		//- AOS animations
+		//- link(rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css")
+		//- 
+		link(rel='stylesheet' href='css/app.css')
+		block head
+
+	body.layout(class=pageClass id=pageId)
+		if headerVisible
+			header.layout__header.header
+				+header()
+				block header
+
+		main.layout__main
+			block content
+
+		if footerVisible
+			footer.layout__footer.footer
+				+footer()
+				block footer
+
+		script(type='text/javascript' src='js/vendors.js')
+		script(type='text/javascript' src='js/app.js')
+		block script

@@ -1,0 +1,104 @@
+html,
+body {
+	height: 100%;
+	scroll-behavior: smooth;
+}
+
+html {
+	line-height: 140%;
+
+	@include desktop {
+		font-size: vw(18px);
+	}
+
+	@include tablet {
+		font-size: vt(13px);
+	}
+
+	@include mobile {
+		font-size: vm(12px);
+	}
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: $main-font;
+	line-height: 140%;
+	font-weight: 500;
+	color: $cr-dark;
+	@extend %antialias;
+	width: 100%;
+	position: relative;
+	background-color: $cr-mainbg;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+main {
+	scroll-behavior: smooth;
+	position: relative;
+}
+
+picture,
+img {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+}
+
+svg {
+	fill: currentColor;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+button,
+a {
+	cursor: pointer;
+}
+
+strong,
+.bold {
+	font-weight: 700;
+}
+
+.layout {
+	position: relative;
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	&__footer {
+		flex-shrink: 0;
+	}
+
+	&__main {
+		flex-grow: 1;
+		position: relative;
+	}
+}
+
+.container {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: vw(93px);
+	padding-right: vw(93px);
+	width: 100%;
+	height: 100%;
+}
+
+@media (inverted-colors) {
+	img,
+	video {
+		filter: invert(100%);
+	}
+}

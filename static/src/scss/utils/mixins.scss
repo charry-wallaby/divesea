@@ -1,0 +1,87 @@
+@mixin r($width) {
+	@media only screen and (max-width: $width + "px"){
+		@content;
+	}
+}
+
+@mixin rmin($width) {
+	@media only screen and (min-width: $width + "px"){
+		@content;
+	}
+}
+
+@mixin rIn($width, $width2) {
+	@media (min-width: $width + "px") and (max-width: $width2 + "px"){
+		@content;
+	}
+}
+
+@mixin ot($orientation) {
+	@media (orientation: $orientation) {
+		@content;
+	}
+}
+
+@mixin aspect-ratio($w, $h, $pseudo: false) {
+	$padding: unquote(calc($h / $w) * 100 + '%');
+
+	@if $pseudo {
+		&::before {
+			content: "";
+			display: block;
+			width: 100%;
+			padding-top: $padding;
+		}
+	}
+
+	@else {
+		padding-top: $padding;
+	}
+
+	@supports (aspect-ratio: 1 / 1) {
+		aspect-ratio: unquote("#{$w} / #{$h}");
+
+		@if $pseudo {
+			&::before {
+				padding-top: initial;
+				display: initial;
+				width: initial;
+			}
+		}
+
+		@else {
+			padding-top: initial;
+		}
+	}
+
+}
+
+@mixin css-lock($min-size: 1, $max-size: 1.4, $min-width: 20, $max-width: 100, $property: font-size, $unit: px) {
+	#{$property}: #{$max-size}#{$unit};
+	#{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})));
+
+	@media (max-width: #{$min-width}#{$unit}) {
+		#{$property}: #{$min-size}#{$unit}
+	}
+	@media (min-width: #{$max-width}#{$unit}) {
+		#{$property}: #{$max-size}#{$unit}
+	}
+}
+
+@mixin desktop {
+	@media (min-width: ($desktop * 1px)) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: ($tablet * 1px)) and (max-width: (($desktop - 1) * 1px)) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: (($tablet - 1) * 1px)) {
+		@content;
+	}
+}

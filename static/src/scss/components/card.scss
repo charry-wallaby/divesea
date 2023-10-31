@@ -1,0 +1,242 @@
+.card {
+	display: flex;
+	padding: vw(14px) vw(14px) vw(20px);
+	max-width: vw(282px);
+	border-radius: vw(24px);
+	background: $cr-white;
+	overflow: hidden;
+	box-shadow: 39px 12px 59px 0px rgba(199, 199, 199, 0.60);
+	text-decoration: none;
+	transition: box-shadow .3s linear;
+
+	&__wrap {
+		width: 100%;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		transition: transform .3s ease-in-out;
+
+		&-block {
+			position: relative;
+			aspect-ratio: 1/1;
+			overflow: hidden;
+			border-radius: vw(24px);
+			background: #F8F8F8;
+		}
+	}
+
+	&__timer {
+		position: absolute;
+		top: vw(14px);
+		right: vw(9px);
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: vw(9.5px) vw(14px);
+		border-radius: 9.41px;
+		border: 1px solid rgba(28, 29, 32, 0.08);
+		background: rgba(28, 29, 32, 0.35);
+		box-shadow: 0px 4.7px 14px 0px rgba(28, 29, 32, 0.08);
+		backdrop-filter: blur(2.35px);
+		color: $cr-white;
+		font-size: vw(14px);
+		font-weight: 500;
+		line-height: 150%;
+		letter-spacing: 0.118px;
+	}
+
+	&__title {
+		color: $cr-dark;
+		font-size: vw(21px);
+		font-weight: 600;
+		margin: vw(19px) 0 vw(14px);
+	}
+
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+	}
+
+	&__current {
+		display: grid;
+		row-gap: vw(5px);
+
+		&-title {
+			grid-column: 1/4;
+			grid-row: 1;
+			color: #94A3B8;
+			font-size: vw(14px);
+			font-weight: 400;
+			line-height: 150%;
+			letter-spacing: 0.118px;
+		}
+
+		&-icon {
+			grid-column: 1/1;
+			grid-row: 2;
+			width: vw(21.2px);
+			height: vw(21.2px);
+		}
+
+		&-price {
+			grid-column: 2/3;
+			grid-row: 2;
+			color: $cr-dark;
+			font-size: vw(16.5px);
+			line-height: 150%;
+		}
+	}
+
+	.btn {
+		padding: vw(11px) vw(21px);
+		font-size: vw(14px);
+		font-weight: 600;
+	}
+
+	&:hover {
+		cursor: pointer;
+		box-shadow: 39px 22px 26px 10px rgba(199, 199, 199, 0.95);
+
+		.card__image {
+			transform: scale(1.25);
+		}
+
+		.btn {
+			color: $cr-dark;
+
+			&::before {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.rv-card {
+	display: flex;
+	flex-direction: column;
+	gap: vw(27px);
+	width: 100%;
+	max-width: vw(365px);
+	padding: vw(26px) vw(24px) vw(21px);
+	border-radius: vw(16px);
+	border: 1px solid #EDF2F7;
+	background: $cr-white;
+	box-shadow: 10px 10px 50px 0px rgba(20, 20, 22, 0.10);
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__body {
+		display: grid;
+		row-gap: vw(20px);
+	}
+
+	&__title {
+		color: #1A202C;
+		font-size: vw(21px);
+		font-weight: 600;
+		line-height: 135%;
+		letter-spacing: 0.2px;
+	}
+
+	&__dots {
+		display: flex;
+		align-items: center;
+
+		svg {
+			width: vw(24px);
+			height: vw(10.7px);
+			margin: vw(4px) 0px;
+		}
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: vw(52px) 1fr;
+		column-gap: vw(15px);
+	}
+
+	&__col {
+		display: grid;
+		row-gap: vw(3px);
+
+		&-top,
+		&-bottom {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+		}
+	}
+
+	&__avatar {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		position: relative;
+		width: vw(46px);
+		height: vw(46px);
+		border-radius: 50%;
+		border: 2px solid $cr-white;
+		background-color: $cr-white;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		&::before {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			content: attr(data-id);
+			width: vw(21.1px);
+			height: vw(21.1px);
+			margin: 0 vw(-2px) vw(-2px) 0;
+			background-color: $cr-white;
+			border-radius: 50%;
+			font-size: vw(11.5px);
+			font-weight: 600;
+			line-height: 150%;
+			letter-spacing: 0.096px;
+		}
+	}
+
+	&__name {
+		font-size: vw(15.4px);
+		font-weight: 500;
+	}
+
+	&__volume {
+		display: flex;
+		align-items: center;
+		font-size: vw(15.4px);
+		font-weight: 600;
+
+		.svg-icon_ethereum {
+			width: vw(17.3px);
+			height: vw(17.3px);
+		}
+	}
+
+	&__nickname {
+		color: #64748B;
+		font-size: vw(12.5px);
+		font-weight: 400;
+		line-height: 150%;
+	}
+
+	&__percent {
+		font-size: vw(13.5px);
+		font-weight: 400;
+		line-height: 150%;
+	}
+}

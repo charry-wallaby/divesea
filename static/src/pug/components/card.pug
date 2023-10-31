@@ -1,0 +1,56 @@
+mixin card(data)
+	a.card(href='product-detail.html' title='Go to more details')&attributes(attributes)
+		.card__wrap 
+			.card__image-block
+				.card__timer!=data.timer
+				+img('card__image', data.image_name, 'jpg', data.title, 'cards', data.image_w, data.image_h)
+			.card__title!=data.title
+			.card__bottom 
+				.card__current 
+					.card__current-title Current bid
+					.card__current-icon
+						+icon("ethereum")
+					span.card__current-price 1.75
+				.btn.btn__primary
+					span.btn__text PLACE BID
+
+mixin recentViewedCard()
+	-
+		var data = [
+			{
+				avatar: 'avatar1',
+				name: 'Alex Ca.',
+				volume: '8,456',
+				nick: 'Alexy',
+				percent: '+23,00%',
+				id: 1
+			},
+			{
+				avatar: 'avatar2',
+				name: 'Juliya S.',
+				volume: '5,327',
+				nick: 'JuliyaS',
+				percent: '-32,01%',
+				id: 2
+			}
+		];
+
+	.rv-card
+		.rv-card__header
+			span.rv-card__title Recent Viewed
+			span.rv-card__dots
+				+icon("dots")
+		.rv-card__body
+			each item in data
+				.rv-card__row
+					.rv-card__col
+						.rv-card__avatar(data-id!=item.id style=`background-image: url('img/avatars/${item.avatar}.jpg')`)
+					.rv-card__col
+						.rv-card__col-top
+							.rv-card__name!=item.name
+							.rv-card__volume
+								+icon("ethereum")
+								span!=item.volume
+						.rv-card__col-bottom
+							.rv-card__nickname!=item.nick
+							.rv-card__percent.color-green!=item.percent

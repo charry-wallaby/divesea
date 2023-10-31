@@ -1,0 +1,43 @@
+mixin header()
+	-
+		var nav = [
+			{
+				text: 'Discover',
+				link: 'discover'
+			},
+			{
+				text: 'Creators',
+				link: 'creators'
+			},
+			{
+				text: 'Sell',
+				link: 'sell'
+			},
+			{
+				text: 'Stats',
+				link: 'stats'
+			},
+		];
+
+	.container.header__container 
+		.header__wrap 
+			.header__left
+				a.header__logo(href="/")
+					+icon("logo", {cls: "header__logo-img"})
+					span.header__logo-text.is-mobile DiveSea
+
+			.header__right
+				nav.header__nav.nav
+					ul.nav__list
+						each item, i in nav
+							li.nav__item
+								a.nav__link(href=`${item.link}.html`, class={'is-active': pageId === item.link})=item.text
+
+				.header__btns 
+					label.header__search 
+						input(type="search", name="search" placeholder="Search Art Work / Creator")
+					a.btn.btn__primary
+						span.btn__text Connect Wallet
+
+			.menu-trigger.js-menu-trigger
+				span

@@ -1,0 +1,15 @@
+mixin filterBtns(type)
+	.filter__buttons()&attributes(attributes)
+		if type === "All"
+			button.btn.btn__secondary.btn__filter(type="button")
+				span.btn__text All 
+
+		button.btn.btn__secondary.btn__filter(type="button")
+			+icon("list", {cls: "btn__icon"})
+			span.btn__text Category 
+		button.btn.btn__secondary.btn__filter(type="button")
+			+icon("collection", {cls: "btn__icon"})
+			span.btn__text Collection 
+		button.btn.btn__secondary.btn__filter(type="button")
+			+icon("usd", {cls: "btn__icon"})
+			span.btn__text Price 

@@ -1,0 +1,65 @@
+.table {
+	&__header {
+		display: grid;
+		grid-template-columns: 3fr 1fr 1.4fr 1.2fr 1.2fr 0.7fr;
+		column-gap: vw(15px);
+		padding: vw(5px) 0;
+
+		&-col {
+			color: #93989A;
+			font-size: vw(22px);
+			line-height: 130%;
+			letter-spacing: 0.22px;
+		}
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: 3fr 1fr 1.4fr 1.2fr 1.2fr 0.7fr;
+		column-gap: vw(15px);
+		border-bottom: 1.5px solid #EBE9E9;
+		padding: vw(40px) 0 vw(25px);
+		font-size: vw(24.5px);
+		font-weight: 600;
+
+		&-col {
+			display: flex;
+			align-items: center;
+			column-gap: vw(23.5px);
+
+			&:not(.--user) > div {
+				display: flex;
+				align-items: center;
+			}
+		}
+
+		&-avatar {
+			position: relative;
+			width: vw(84px);
+			height: vw(84px);
+			border-radius: 50%;
+			border: 3.5px solid $cr-white;
+			background-color: $cr-white;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		&-name {
+			font-size: vw(28px);
+			line-height: 140%;
+		}
+
+		&-nickname {
+			color: #64748B;
+			font-size: vw(22.8px);
+			font-weight: 400;
+			line-height: 150%;
+		}
+
+		.svg-icon_ethereum {
+			width: vw(31.5px);
+			height: vw(31.5px);
+		}
+	}
+}

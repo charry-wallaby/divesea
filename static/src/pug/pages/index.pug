@@ -1,0 +1,307 @@
+extends ../layout/main
+
+block variables
+	- title = 'DiveSea | Home'
+	- pageClass = 'home-page';
+	- pageId = 'home';
+	-
+		var cardsTop = [
+			{
+				timer: '07h 09m 12s',
+				title: 'Sun-Glass',
+				image_name: 'card1'
+			}, 
+			{
+				timer: '07h 09m 12s',
+				title: 'Sun-Glass',
+				image_name: 'card2'
+			}, 
+			{
+				timer: '07h 09m 12s',
+				title: 'Sun-Glass',
+				image_name: 'card3'
+			}, 
+			{
+				timer: '19h 09m 12s',
+				title: 'NuEvey',
+				image_name: 'card4'
+			}, 
+			{
+				timer: '19h 09m 12s',
+				title: 'NuEvey',
+				image_name: 'card5'
+			}, 
+			{
+				timer: '07h 09m 12s',
+				title: 'Sun-Glass',
+				image_name: 'card1'
+			}, 
+			{
+				timer: '07h 09m 12s',
+				title: 'Sun-Glass',
+				image_name: 'card2'
+			}, 
+			{
+				timer: '07h 09m 12s',
+				title: 'Sun-Glass',
+				image_name: 'card3'
+			}
+		];
+	-
+		var table = {
+			header: [
+				{
+					col1: 'Collection',
+					col2: 'Volume',
+					col3: '24h %',
+					col4: 'Floor Price',
+					col5: 'Owners',
+					col6: 'Items'
+				}
+			],
+			body: [
+				{
+					avatar: 'avatar1',
+					name: 'Alex Ca.',
+					nick: 'By Alex',
+					volume: '8,456',
+					percent: '+ 27.78%',
+					price: '3,5',
+					owners: '2.2K',
+					items: '500'
+				},
+				{
+					avatar: 'avatar2',
+					name: 'Alex Ca.',
+					nick: 'By Alex',
+					volume: '4,780',
+					percent: '+ 27.78%',
+					price: '7,9',
+					owners: '3.4K',
+					items: '900'
+				},
+				{
+					avatar: 'avatar1',
+					name: 'Alex Ca.',
+					nick: 'By Alex',
+					volume: '8,456',
+					percent: '+ 27.78%',
+					price: '3,5',
+					owners: '2.2K',
+					items: '500'
+				},
+				{
+					avatar: 'avatar2',
+					name: 'Alex Ca.',
+					nick: 'By Alex',
+					volume: '4,780',
+					percent: '+ 27.78%',
+					price: '7,9',
+					owners: '3.4K',
+					items: '900'
+				}
+			]
+		};
+	-
+		var accordion = [
+			{
+				button: 'What is an NFT?',
+				content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+			},
+			{
+				button: 'What can I use NFTs for?',
+				content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+			},
+			{
+				button: 'What is the difference between an NFT and cryptocurrency?',
+				content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+			},
+			{
+				button: 'How much is an NFT worth?',
+				content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+			},
+			{
+				button: 'How do I purchase an NFT on your platform ?',
+				content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+			},
+		];
+
+block content
+	section.intro 
+		.intro__wrap 
+			.intro__content 
+				hr.intro__line
+				h1.h1.intro__title Discover And Create NFTs
+				p.intro__subtitle
+					| Discover, Create and Sell NFTs On Our NFT Marketplace #[br]
+					| With Over Thousands Of NFTs And Get a #[span $20 bonus].
+				.intro__btns 
+					a.btn.btn__primary
+						span.btn__text Explore More
+					a.btn.btn__secondary
+						span.btn__text create NFT
+				.intro__stats 
+					.intro__stats-item 
+						p 430K+
+						p Art Works
+					.intro__stats-item 
+						p 159K+
+						p Creators
+					.intro__stats-item 
+						p 87K+
+						p Collections
+
+			.swiper.carousel.intro__carousel
+				.carousel__decors
+					.carousel__decors-dots
+					+icon("arrow-skrew", {cls: "carousel__decors-arrow"})
+				.swiper-wrapper.intro__carousel-wrap
+					each slide in cardsTop
+						.swiper-slide.intro__carousel-slide
+							+img('', slide.image_name, 'jpg', slide.title, 'cards')
+							.image-shadow(style=`background-image: url('img/cards/${slide.image_name}.jpg')`)
+				.carousel__nav
+					.carousel__btn.--prev
+						+icon("arrow")
+					.carousel__btn.--next
+						+icon("arrow")
+
+	section.weekly
+		.container 
+			h2.h2.text-center.weekly__title Weekly - Top NFT
+		.swiper.carousel.weekly__carousel 
+			.swiper-wrapper
+				each item in cardsTop
+					+card({
+						timer: item.timer,
+						title: item.title,
+						image_name: item.image_name
+					}).swiper-slide
+			.carousel__nav
+				.carousel__btn.--prev
+					+icon("arrow")
+				.carousel__btn.--next
+					+icon("arrow")
+
+	section.collection 
+		.container.collection__container
+			+recentViewedCard()
+			h2.h2.text-center.collection__title Top Collection
+			.table.collection__table
+				each title in table.header
+					+tableHeader({
+						col1: title.col1,
+						col2: title.col2,
+						col3: title.col3,
+						col4: title.col4,
+						col5: title.col5,
+						col6: title.col6
+					})
+
+				.table__body 
+					each item in table.body
+						+tableBody({
+							avatar: item.avatar,
+							name: item.name,
+							nick: item.nick,
+							volume: item.volume,
+							percent: item.percent,
+							price: item.price,
+							owners: item.owners,
+							items: item.items
+						})
+
+			+exploreAllLink()
+
+	section.explore 
+		.container.explore__container
+			h2.h2.text-center.explore__title Explore Marketplace
+			+filterBtns("All").explore__filter
+
+			.explore__cards
+				each item in cardsTop
+					+card({
+						timer: item.timer,
+						title: item.title,
+						image_name: item.image_name
+					})
+
+			+exploreAllLink()
+
+	section.unleash 
+		.container.unleash__container 
+			.unleash__left
+				h2.h2.unleash__title
+					span Just Unleash - #[br]
+					span Your Inner Collector
+
+				ul.unleash__list 
+					li.unleash__list-item Best Seller All Around World
+					li.unleash__list-item $2M+ Transections Every Day
+					li.unleash__list-item Secure Transactions
+					li.unleash__list-item Exclusive Collections From Sellers
+					li.unleash__list-item Easy Buying and Selling
+					li.unleash__list-item Join Our Community
+
+				a.btn.btn__primary.unleash__btn
+					span.btn__text Explore More
+					+icon("arrow-btn", {cls: 'btn__icon'})
+
+			.unleash__right
+				+img('unleash__image --best', 'best-sellers', 'png', 'Best Sellers', 'home')
+				+img('unleash__image --notify', 'notification', 'png', 'Notification', 'home')
+				+img('unleash__image --recently', 'recently', 'png', 'Recently Viewed', 'home')
+
+			.unleash__decor
+
+	section.community
+		.container.community__container
+			.community__decor.--ellipse-xl
+				.community__decor-wrap
+					.community__decor-icon.--icon1(style='background-image: url(img/home/community/ellipse1/icon1.png);')
+					.community__decor-icon.--icon2(style='background-image: url(img/home/community/ellipse1/icon2.png);')
+					.community__decor-icon.--icon3(style='background-image: url(img/home/community/ellipse1/icon3.png);')
+					.community__decor-icon.--icon4(style='background-image: url(img/home/community/ellipse1/icon4.png);')
+					.community__decor-icon.--icon5(style='background-image: url(img/home/community/ellipse1/icon5.png);')
+
+			.community__decor.--ellipse-sm
+				.community__decor-wrap
+					.community__decor-icon.--icon1(style='background-image: url(img/home/community/ellipse2/icon1.png);')
+					.community__decor-icon.--icon2(style='background-image: url(img/home/community/ellipse2/icon2.png);')
+					.community__decor-icon.--icon3(style='background-image: url(img/home/community/ellipse2/icon3.png);')
+					.community__decor-icon.--icon4(style='background-image: url(img/home/community/ellipse2/icon4.png);')
+
+			.community__wrap 
+				h2.h2.text-center.community__title
+					span Join The#[br]
+					span Community
+				p.text-center.community__subtitle 
+					| Our vibrant community is full of collectors, artists, and enthusiasts 
+					| who share a passion for one-of-a-kind digital.
+				a.btn.btn__primary
+					span.btn__text Join Our Community
+
+	section.faq 
+		.container.faq__container 
+			h2.h2.text-center.faq__title 
+				span Frequently Asked #[br]
+				span Questions
+
+			.faq__accordion.accordion 
+				each item in accordion
+					button.accordion__btn!=item.button
+					.accordion__content!=item.content
+
+	section.call 
+		.container.call__container
+			.call__banner.banner 
+				.banner__left
+					h2.h2.banner__title Create and Sell NFTs
+					p.banner__subtitle World’s Largest NFT Place
+					.banner__btns
+						a.btn.btn__white
+							span.btn__text Explore More
+						a.btn.btn__primary.bc-white
+							span.btn__text Sell Artwork
+				.banner__right
+					+img('banner__image', 'banner-image', 'png', 'Banner image', 'home')
